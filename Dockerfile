@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     poppler-utils \
     ghostscript \
     # Metadata
-    exiftool \
+    libimage-exiftool-perl \
     # General media utilities
     curl \
     # Fonts
@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-liberation \
     fonts-dejavu \
     fonts-freefont-ttf \
-    fonts-twemoji \
+    fonts-noto-extra \
     && fc-cache -fv \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
