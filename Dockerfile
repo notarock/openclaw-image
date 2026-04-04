@@ -21,7 +21,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libimage-exiftool-perl \
     # TTS
     espeak-ng \
-    espeak-ng-data-fr \
     # General media utilities
     curl \
     # Fonts
