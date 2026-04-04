@@ -19,6 +19,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ghostscript \
     # Metadata
     libimage-exiftool-perl \
+    # TTS
+    espeak-ng \
+    espeak-ng-data-fr \
     # General media utilities
     curl \
     # Fonts
