@@ -18,10 +18,16 @@ jobs:
     permissions:
       contents: read
       packages: write
+    outputs:
+      version: ${{ steps.sha.outputs.short }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
       - name: Log in to GHCR
         uses: docker/login-action@v4
@@ -46,3 +52,31 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  gitops:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout GitOps repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          token: ${{ secrets.GITOPS_TOKEN }}
+          repository: notarock/gitops
+
+      - name: Update image tag
+        run: |
+          set -x
+          sed -i -E 's|(tag: )"[^"]*"|\1"${{ needs.build-and-push.outputs.version }}"|' openclaw-operator/resources/arteix4090.yaml
+          git diff --unified=0
+
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          coauthor_name: ${{ github.actor }}
+          github_token: ${{ secrets.GITOPS_TOKEN }}
+          repository: notarock/gitops
+          message: "chore: autopublish openclaw-operator/resources/arteix4090.yaml ${{ needs.build-and-push.outputs.version }}"
