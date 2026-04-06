@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # Video/audio processing
     ffmpeg \
     sox \
+    yt-dlp \
     # Image processing
     imagemagick \
     libmagickwand-dev \
