@@ -34,7 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-freefont-ttf \
     fonts-noto-extra \
     jq yq \
-    && fc-cache -fv \
+    && fc-cache -fvs \
+    && convert -list font | grep -i emoji \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
