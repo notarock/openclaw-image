@@ -71,6 +71,7 @@ jobs:
         run: |
           set -x
           sed -i -E 's|(tag: )"[^"]*"|\1"${{ needs.build-and-push.outputs.version }}"|' openclaw-operator/resources/arteix4090.yaml
+          sed -i -E 's|(tag: )"[^"]*"|\1"${{ needs.build-and-push.outputs.version }}"|' openclaw-operator/resources/arteix-discord.yaml
           git diff --unified=0
 
       - name: Commit & Push changes
@@ -79,4 +80,4 @@ jobs:
           coauthor_name: ${{ github.actor }}
           github_token: ${{ secrets.GITOPS_TOKEN }}
           repository: notarock/gitops
-          message: "chore: autopublish openclaw-operator/resources/arteix4090.yaml ${{ needs.build-and-push.outputs.version }}"
+          message: "chore: autopublish openclaw-operator/resources/arteix4090.yaml and arteix-discord.yaml ${{ needs.build-and-push.outputs.version }}"
