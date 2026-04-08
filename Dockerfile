@@ -33,9 +33,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-dejavu \
     fonts-freefont-ttf \
     fonts-noto-extra \
+    fonts-emoji-gtk \
+    fonts-unifont \
     jq yq \
     && fc-cache -fvs \
-    && convert -list font | grep -i emoji \
+    && convert -list font | grep -i emoji || echo "Warning: No emoji fonts found in ImageMagick" \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
