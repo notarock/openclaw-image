@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     yt-dlp \
     # Image processing
     imagemagick \
+    python3-pil \
     libmagickwand-dev \
     gifsicle \
     webp \
@@ -36,9 +37,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fonts-emoji-gtk \
     fonts-unifont \
     jq yq \
-    && fc-cache -fvs \
-    && convert -list font | grep -i emoji || echo "Warning: No emoji fonts found in ImageMagick" \
+    && fc-cache -fv \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
-USER node
