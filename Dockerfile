@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     yt-dlp \
     # Image processing
     imagemagick \
+    python3-pil \
     libmagickwand-dev \
     gifsicle \
     webp \
