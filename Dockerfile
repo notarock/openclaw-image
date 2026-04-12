@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gifsicle \
     webp \
     python-pil \
+    zip \
     # OCR
     tesseract-ocr \
     tesseract-ocr-eng \
