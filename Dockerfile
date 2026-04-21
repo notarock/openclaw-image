@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # PDF tools
     poppler-utils \
     ghostscript \
+    pandoc \
     # Metadata
     libimage-exiftool-perl \
     # TTS
