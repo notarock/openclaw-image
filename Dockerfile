@@ -28,6 +28,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     espeak-ng \
     # General media utilities
     curl \
+    # Code
+    opencode
     # Fonts
     fonts-noto \
     fonts-noto-cjk \
