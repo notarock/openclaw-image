@@ -70,8 +70,7 @@ jobs:
       - name: Update image tag
         run: |
           set -x
-          sed -i -E 's|(tag: )"[^"]*"|\1"${{ needs.build-and-push.outputs.version }}"|' openclaw-operator/resources/arteix4090.yaml
-          sed -i -E 's|(tag: )"[^"]*"|\1"${{ needs.build-and-push.outputs.version }}"|' openclaw-operator/resources/arteix-discord.yaml
+          sed -i -E 's|(tag: )"[^"]*"|\1"${{ needs.build-and-push.outputs.version }}"|' openclaw-operator/base/instance.yaml
           git diff --unified=0
 
       - name: Commit & Push changes
