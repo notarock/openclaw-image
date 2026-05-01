@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     # General media utilities
     curl \
     # Code
-    opencode
+    opencode \
     # Fonts
     fonts-noto \
     fonts-noto-cjk \
